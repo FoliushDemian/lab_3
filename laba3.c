@@ -1,38 +1,38 @@
 #include <stdio.h>
 #include <string.h>
-void main(void)
+int main(void)
 {
 printf("you can only enter numbers from 1 to 10 and a string of up to 9 elements\n");
-char S[10];
+char String[10];
 printf("enter string\n");
-gets(S);
-if(strlen(S)>=10)
+gets(String);
+if(strlen(String)>=10)
 printf("wrong data");
 else
  {
-char C[strlen(S)];
-int k;
-printf("Enter key:");
-scanf("%d",&k);
-if(k>10 || k<=0)
+char Cipher[strlen(String)];
+int key;
+printf("enter key:");
+scanf("%d",&key);
+if(key>10 || key<=0)
 printf("wrong data");
 else
   {
-int p=0,len_S=strlen(S);//the initial cursor position and the initial string length
-for (int i=0; i<=len_S;i++)
+int position=0,len_String=strlen(String);//the initial cursor position and the initial string length
+for (int i=0; i<=len_String;i++)
    {
-   p=p+k-1;// cursor position after each iteration
-   while (p>=strlen(S))
+   position=position+key-1;// cursor position after each iteration
+   while (position>=strlen(String))
     {
-    p=p-strlen(S);//returns the cursor to the beginning so that it does not go beyond the line
-    if (strlen(S)==0)
+    position=position-strlen(String);//returns the cursor to the beginning so that it does not go beyond the line
+    if (strlen(String)==0)
     break;
     }
-    C[i]=S[p];
-    for (int j=p; j<strlen(S);j++)
-    S[j]=S[j+1];
+    Cipher[i]=String[position];
+    for (int j=position; j<strlen(String);j++)
+    String[j]=String[j+1];
    }
-printf("C= %s",C);
+printf("C= %s",Cipher);
   }
  }
 }
